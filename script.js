@@ -18,6 +18,7 @@ class Game
   restartButton;
   buttonsRow;
   winningAlert;
+  winningSequence;
 
   constructor()
   {
@@ -222,6 +223,7 @@ class Game
       if(this.isWinning(currentOPosition, this.winningPositions[i])) return true;
       if(this.isWinning(currentXPosition, this.winningPositions[i])) return true;
     }
+
     return false;
   }
 
@@ -237,6 +239,11 @@ class Game
     this.stopButton.classList.add('hidden');
     this.buttonsRow.classList.add('flex-col');
     this.winningAlert.innerHTML = 'The '+player.icon+' player won!';
+
+    // Highlights the winning sequence
+    document.getElementById('winningSection').classList.remove('hidden');
+    console.log(this.winningSequence);
+    document.getElementById(this.winningSequence).classList.remove('hidden');
   }
 
   draw()
@@ -267,6 +274,8 @@ class Game
     for(let current in currentPosition)
       if(winningPosition.includes(currentPosition[current]))
         points++;
+
+    if(points == 3) this.winningSequence = winningPosition.join('-');
 
     return points == 3;
   }

@@ -26,7 +26,7 @@
       </div>
 
       <!-- TicTacToe Grid -->
-      <div class="grid grid-cols-3 grid-rows-3 w-96 h-96 [&>div]:flex [&>div]:justify-center [&>div]:items-center">
+      <div class="grid grid-cols-3 grid-rows-3 w-96 h-96 [&>div]:flex [&>div]:justify-center [&>div]:items-center relative">
 
         <!-- Top Right -->
         <div class="" id="tl"></div>
@@ -55,10 +55,60 @@
         <!-- Bottom Right -->
         <div class="" id="br"></div>
 
+        <!-- Winning Bar -->
+        <section class="absolute top-0 left-0 w-full h-full hidden" id="winningSection">
+
+          <!-- Possible wins Square -->
+          <div class="relative w-full h-full">
+            
+            <!-- Columns -->
+            <div class="w-full h-full absolute flex">
+  
+              <!-- Left -->
+              <div class="w-1/3 h-full flex justify-center"><span class="h-full w-min border-black border-4 block hidden" id="bl-cl-tl"></span></div>
+  
+              <!-- Center -->
+              <div class="w-1/3 h-full flex justify-center"><span class="h-full w-min border-black border-4 block hidden" id="bc-cc-tc"></span></div>
+  
+              <!-- Right -->
+              <div class="w-1/3 h-full flex justify-center"><span class="h-full w-min border-black border-4 block hidden" id="br-cr-tr"></span></div>
+  
+            </div>
+  
+            <!-- Rows -->
+            <div class="w-full h-full absolute ahidden flex flex-col">
+  
+              <!-- Left -->
+              <div class="h-1/3 w-full flex flex-col justify-center"><span class="w-full h-min border-black border-4 block hidden" id="tc-tl-tr"></span></div>
+  
+              <!-- Center -->
+              <div class="h-1/3 w-full flex flex-col justify-center"><span class="w-full h-min border-black border-4 block hidden" id="cc-cl-cr"></span></div>
+  
+              <!-- Right -->
+              <div class="h-1/3 w-full flex flex-col justify-center"><span class="w-full h-min border-black border-4 block hidden" id="bc-bl-br"></span></div>
+  
+            </div>
+            
+            <!-- Diagonals -->
+            <div class="w-full h-full absolute ahidden flex justify-center items-center">
+  
+              <!-- / -->
+              <span class="w-full border-black border-4 block -rotate-45 absolute hidden h-0" id="bl-cc-tr"></span>
+  
+              <!-- \ -->
+              <span class="w-full border-black border-4 block rotate-45 absolute hidden h-0" id="br-cc-tl"></span>
+  
+            </div>
+
+          </div>
+
+
+        </section>
+
       </div>
 
       <!-- Buttons Row -->
-      <div class="flex gap-4" id="buttonsRow">
+      <div class="flex gap-4 justify-center items-center" id="buttonsRow">
 
         <!-- Start Button -->
         <button id="startButton" class="w-fit text-white px-4 py-2 rounded-md bg-green-500">Start</button>
