@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="w-full h-full">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/cf64f43fc0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./script.js"></script>
+
+    <title>TicTacToe</title>
+
+  </head>
+
+  <body class="w-full h-full">
+
+    <!-- Main Content -->
+    <main class="w-full h-full flex flex-col justify-center items-center gap-4">
+
+      <!-- Timer -->
+      <div class="flex items-center p-4 gap-4 text-4xl">
+        <p>Timer:</p>
+        <span id="timer">00:00</span>
+      </div>
+
+      <!-- TicTacToe Grid -->
+      <div class="grid grid-cols-3 grid-rows-3 w-96 h-96 [&>div]:flex [&>div]:justify-center [&>div]:items-center">
+
+        <!-- Top Right -->
+        <div class="" id="tl"></div>
+
+        <!-- Top Center -->
+        <div class="border-x-4 border-black" id="tc"></div>
+
+        <!-- Top Right -->
+        <div class="" id="tr"></div>
+
+        <!-- Center Left -->
+        <div class="border-y-4 border-black" id="cl"></div>
+
+        <!-- Center Center -->
+        <div class="border-4 border-black" id="cc"></div>
+
+        <!-- Center Right -->
+        <div class="border-y-4 border-black" id="cr"></div>
+
+        <!-- Bottom Left -->
+        <div class="" id="bl"></div>
+
+        <!-- Bottom Center -->
+        <div class="border-x-4 border-black" id="bc"></div>
+
+        <!-- Bottom Right -->
+        <div class="" id="br"></div>
+
+      </div>
+
+      <!-- Buttons Row -->
+      <div class="flex gap-4" id="buttonsRow">
+
+        <!-- Start Button -->
+        <button id="startButton" class="text-white px-4 py-2 rounded-md bg-green-500">Start</button>
+        
+        <!-- Stop Button -->
+        <button id="stopButton" class="text-white px-4 py-2 rounded-md bg-red-500 hidden">Stop</button>
+        
+        <!-- Resume Button -->
+        <button id="resumeButton" class="text-white px-4 py-2 rounded-md bg-green-500 hidden">Resume</button>
+
+        <!-- Winning Alert -->
+        <p id="winningAlert" class="text-4xl text-green-500"></p>
+        
+        <!-- Restart Button -->
+        <button id="restartButton" class="text-white px-4 py-2 rounded-md bg-blue-500 hidden">Restart</button>
+
+      </div>      
+
+    </main>
+
+  </body>
+
+</html>
