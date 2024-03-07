@@ -193,6 +193,9 @@ class Game
     // Checks if the player has won 
     if(this.checksForWin()) return this.winner(this.currentPlayer);
 
+    // Checks if it's a draw (all squares occupied)
+    if(this.playCount == 9) return this.draw();
+
     // Changes the current player
     this.currentPlayer = (this.currentPlayer.id == 'o') ? this.x : this.o;
 
@@ -234,6 +237,20 @@ class Game
     this.stopButton.classList.add('hidden');
     this.buttonsRow.classList.add('flex-col');
     this.winningAlert.innerHTML = 'The '+player.icon+' player won!';
+  }
+
+  draw()
+  {
+    // Stop the timer
+    clearInterval(this.timerInterval);
+
+    // Set the game status as finished to not be able to play anymore in this game
+    this.gameStatus = 'finished';
+    
+    // Changes the buttons visibilities
+    this.stopButton.classList.add('hidden');
+    this.buttonsRow.classList.add('flex-col');
+    this.winningAlert.innerHTML = 'It was a draw!';
   }
 
   isWinning(currentPosition, winningPosition)
