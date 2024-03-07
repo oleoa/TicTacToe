@@ -131,7 +131,7 @@ class Game
     this.gameStatus = 'resumed';
 
     // Continius the timer
-    this.timerInterval = setInterval(this.timerOneSec.bind(this), 1000);
+    this.timerInterval = setInterval(this.timerOneSec.bind(this), 10);
 
     // Hides the stop button and shows the resume button
     this.resumeButton.classList.add('hidden');
@@ -147,7 +147,7 @@ class Game
   gameStarted()
   {
     // Starts the timer
-    this.timerInterval = setInterval(this.timerOneSec.bind(this), 1000);
+    this.timerInterval = setInterval(this.timerOneSec.bind(this), 10);
 
     // Defines that the gameStatus is 'started'
     this.gameStatus = 'started';
@@ -260,28 +260,37 @@ class Game
     this.timer++;
 
     // Creates a seconds and minutes variables for us to work with
+    let milisec = 0;
     let secs = 0;
     let minutes = 0;
 
     // Defines the values of minutes and secs
-    if(this.timer < 60) secs = this.timer
-    else if(this.timer < 60*60)
+    if(this.timer < 100) milisec = this.timer
+    else if(this.timer < 60*100)
     {
-      minutes =  Math.floor(this.timer / 60);
-      secs = this.timer % 60;
+      secs = Math.floor(this.timer / 100);
+      milisec = this.timer % 100
+    }
+    else if(this.timer < 60*60*100)
+    {
+      minutes =  Math.floor(this.timer / (60*100));
+      secs = Math.floor(this.timer / 100) % 60;
+      milisec = this.timer % 100;
     }
     else
     {
       minutes = 'XX'
       secs = 'XX'
+      milisec = 'XX'
     }
 
     // Ads the 0X:0X to secs and minutes
     if(minutes < 10) minutes = '0'+minutes;
     if(secs < 10) secs = '0'+secs;
+    if(milisec < 10) milisec = '0'+milisec;
 
     // Displays the timer
-    this.timerSpan.innerHTML = minutes+':'+secs;
+    this.timerSpan.innerHTML = minutes+':'+secs+':'+milisec;
   }
 }
 
